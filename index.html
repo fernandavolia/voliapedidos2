@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vòlia Pedidos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="logo_volia.png" alt="Logo Vòlia">
+      <span>Vòlia Pedidos</span>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar produtos...">
+    </div>
+
+    <div class="category-filter">
+      <select id="categoryFilter">
+  <option value="">Todas as categorias</option>
+  <option value="Preparadores">Preparadores</option>
+  <option value="Gel Base">Gel Base</option>
+  <option value="Gel Classic">Gel Classic</option>
+  <option value="Gel Control">Gel Control</option>
+  <option value="Gel Hybrid">Gel Hybrid</option>
+  <option value="Gel Glitter | Hard">Gel Glitter | Hard</option>
+  <option value="Acrílico">Acrílico</option>
+  <option value="Top Coat">Top Coat</option>
+  <option value="Top Coat Sachê">Top Coat Sachê</option>
+  <option value="Esmaltes e Finalizadores">Esmaltes e Finalizadores</option>
+  <option value="Pote Eco">Pote Eco</option>
+  <option value="Frascos">Frascos</option>
+  <option value="Lixas">Lixas</option>
+</select>
+    </div>
+  </header>
+
+  <!-- Informações do Cliente -->
+  <section class="cliente">
+    <h2>Informações do Cliente</h2>
+    <div class="form-grid">
+      <input type="text" id="nomeCliente" placeholder="Nome do Cliente">
+      <input type="text" id="telefoneCliente" placeholder="Telefone">
+      <input type="text" id="cnpjCliente" placeholder="CNPJ">
+    </div>
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtosContainer"></section>
+
+  <!-- Rodapé do Pedido -->
+  <footer class="pedido-footer">
+    <div class="pedido-info">
+      <span>Total do Pedido:</span>
+      <strong id="pedidoTotal">R$ 0,00</strong>
+      <span id="pedidoQtd">0 produtos</span>
+    </div>
+    <button class="btn-ver" onclick="abrirResumoPedido()">Ver Pedido</button>
+  </footer>
+
+  <!-- Modal Resumo -->
+  <div id="pedidoModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Resumo do Pedido</h2>
+      <div class="client-info">
+        <p><strong>Nome:</strong> <span id="resumoNome"></span></p>
+        <p><strong>Telefone:</strong> <span id="resumoTelefone"></span></p>
+        <p><strong>CNPJ:</strong> <span id="resumoCNPJ"></span></p>
+      </div>
+      <div id="pedidoResumo"></div>
+      <h3>Total: <span id="pedidoResumoTotal">R$ 0,00</span></h3>
+
+      <div class="modal-actions">
+        <button class="btn lilac" onclick="copiarPedido()">📋 Copiar Pedido</button>
+        <button class="btn green" onclick="enviarWhatsApp()">WhatsApp</button>
+        <button class="btn pink" onclick="salvarPDF()">📄 Salvar PDF</button>
+      </div>
+
+      <button class="close-btn" onclick="fecharResumoPedido()">Fechar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
