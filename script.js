@@ -355,3 +355,27 @@ if (!categoria || titulo.innerText === categoria) {
 
   });
 });
+
+function salvarPDF() {
+  const nome = document.getElementById("nomeCliente").value || "Não informado";
+  const telefone = document.getElementById("telefoneCliente").value || "Não informado";
+  const cnpj = document.getElementById("cnpjCliente").value || "Não informado";
+
+  let texto = `Resumo do Pedido\n\nCliente: ${nome}\nTelefone: ${telefone}\nCNPJ: ${cnpj}\n\n`;
+
+  let total = 0;
+  carrinho.forEach(item => {
+    total += item.preco * item.quantidade;
+    texto += `${item.quantidade} × ${item.nome} — R$ ${(item.preco * item.quantidade).toFixed(2)}\n`;
+  });
+
+  texto += `\nTotal do Pedido: ${total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
+
+  // Usando jsPDF
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(12);
+  doc.text(texto, 10, 10);
+  doc.save("pedido.pdf");
+}
