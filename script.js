@@ -301,6 +301,10 @@ function enviarWhatsApp() {
   window.open("https://wa.me/?text=" + encodeURIComponent(texto), "_blank");
 }
 
+function salvarPDF() {
+  window.print();
+}
+
 renderizarProdutos();
 
 // --- FILTRO POR BUSCA ---
@@ -355,5 +359,6 @@ if (!categoria || titulo.innerText === categoria) {
 
   });
 });
+
 
 
